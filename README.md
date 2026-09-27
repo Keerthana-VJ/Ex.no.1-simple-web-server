@@ -1,84 +1,136 @@
+# Ex 01 - Simple Web Server using Spring Boot
 
-## Ex 01 -Simple Web Server using Spring Boot
+## Name: Keerthana V
+## Register Number: 212223220045
 
-## AIM:
-To develop a Simple Web Server using Spring Boot that can handle basic HTTP requests and return appropriate responses through RESTful endpoints.
-## ALGORITHM:
-Start a New Spring Boot Project:
+## AIM
 
-Use Spring Initializr (https://start.spring.io/)
+To develop a simple web server using Spring Boot that can handle basic HTTP requests and return appropriate responses through RESTful endpoints.
 
-Select dependencies: Spring Web
+---
 
-Create the Main Application Class:
+## ALGORITHM
 
-This class contains the main() method with @SpringBootApplication annotation to bootstrap the application.
+### Step 1: Create a New Spring Boot Project
 
-Create a Controller Class:
+1. Go to [Spring Initializr](https://start.spring.io/).
+2. Create a new Maven project.
+3. Select **Spring Web** as the dependency.
+4. Generate and download the project.
 
-Create a class annotated with @RestController.
+### Step 2: Create the Main Application Class
 
-Define one or more HTTP request handler methods using @GetMapping, @PostMapping, etc.
+Create the main application class with the `@SpringBootApplication` annotation.
 
-Write Endpoint Methods:
+This class contains the `main()` method, which starts the Spring Boot application.
 
-Inside the controller, define a simple method for handling GET requests (e.g., return “Hello World” when /hello is accessed).
+### Step 3: Create a Controller Class
 
-Run the Application:
+Create a controller class using the `@RestController` annotation.
 
-Run the application using your IDE or via the command line (mvn spring-boot:run or ./mvnw spring-boot:run).
+The controller is responsible for handling HTTP requests and returning responses.
 
-Test the Endpoint:
+### Step 4: Define the Endpoint
 
-Open a web browser or use Postman to visit:
-http://localhost:8080/hello
+Use the `@GetMapping` annotation to define a GET endpoint.
 
-You should see the output (e.g., "Hello World").
+For this experiment, the endpoint is:
 
-Stop the Server:
+```text
+GET /hello
+```
+The endpoint returns:
+```text
+Hello, Spring Boot!
+```
 
-Stop the Spring Boot server once testing is complete.
+### Step 5: Run the Application
+Run the Spring Boot application using the IDE or Maven:
+```
+mvn spring-boot:run
+```
+Or, using the Maven wrapper:
+```
+./mvnw spring-boot:run
+```
 
+### Step 6: Test the Endpoint
 
-## Program 
+Open a web browser or Postman and visit:
+
+```http://localhost:8080/hello```
+
+The following response should be displayed:
+```text
+Hello, Spring Boot!
+```
+### Step 7: Stop the Server
+
+Stop the Spring Boot application after testing the endpoint.
+
+## PROJECT STRUCTURE
 
 simple-web-server/
+│
 ├── src/
 │   └── main/
 │       ├── java/
-│       │   └── com.example.demo/
-│       │       ├── DemoApplication.java
-│       │       └── HelloController.java
+│       │   └── com/
+│       │       └── example/
+│       │           └── demo/
+│       │               ├── DemoApplication.java
+│       │               └── HelloController.java
+│       │
 │       └── resources/
 │           └── application.properties
-├── pom.xml
+│
+└── pom.xml
 
- ### Pom.xml
+## PROGRAM
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+1. pom.xml
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.example</groupId>
-    <artifactId>simple-web-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Simple Web Server</name>
-    <description>Demo project for Spring Boot Web Server</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
-        <relativePath/>
+        <version>4.1.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
+    <groupId>com.example</groupId>
+    <artifactId>Exp1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Exp1</name>
+    <description>Exp1</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
     <dependencies>
-        <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -90,46 +142,46 @@ simple-web-server/
             </plugin>
         </plugins>
     </build>
+
 </project>
+```
 
-### DemoApplication.java
-
-package com.example.demo;
+2. Exp1Application.java
+```
+package com.example.exp1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class Exp1Application {
+
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(Exp1Application.class, args);
     }
+
 }
+```
 
-
-### HelloController.java
-package com.example.demo;
+3.  HelloController.java
+```
+package com.example.exp1;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-
     @GetMapping("/hello")
-    public String sayHello() {
+    public String hello(){
         return "Hello, Spring Boot!";
     }
 }
+```
 
+## OUTPUT
 
-### application.properties:
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0d819a6c-66cf-430e-b083-13594c0d5bcd" />
 
- server.port=8081
-
-
-
-
-Output:
-
-
+## RESULT
+Thus the Spring Boot application with a REST controller that returns "Hello, Spring Boot!" when accessed via  GET- /hello was created and executed successfully. 
