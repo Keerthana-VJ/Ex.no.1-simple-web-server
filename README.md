@@ -181,7 +181,8 @@ public class HelloController {
 
 ## OUTPUT
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0d819a6c-66cf-430e-b083-13594c0d5bcd" />
+<img width="955" height="471" alt="image" src="https://github.com/user-attachments/assets/db6d24a2-71fa-4345-991e-5d6dcc63218a" />
+
 
 ## RESULT
 Thus the Spring Boot application with a REST controller that returns "Hello, Spring Boot!" when accessed via  GET- /hello was created and executed successfully. 
